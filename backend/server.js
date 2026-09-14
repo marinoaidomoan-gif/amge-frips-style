@@ -30,3 +30,11 @@ mongoose
     app.listen(PORT, () => console.log(`Serveur sur le port ${PORT}`));
   })
   .catch((err) => console.error('Erreur de connexion MongoDB :', err));
+
+// Gestion des erreurs (upload invalide, etc.)
+app.use((err, req, res, next) => {
+  if (err) {
+    return res.status(400).json({ message: err.message || 'Une erreur est survenue.' });
+  }
+  next();
+});
