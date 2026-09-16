@@ -1,1 +1,38 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-gold: #D4AF37;
+  --color-gold-deep: #C9A050;
+  --color-blush: #F8E1E7;
+  --color-blush-soft: #F4E9EC;
+  --color-charcoal: #2C2C2C;
+  --color-charcoal-light: #3A3A3A;
+  --color-offwhite: #FAFAFA;
+  --font-display: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-offwhite text-charcoal dark:bg-charcoal dark:text-offwhite font-body antialiased transition-colors duration-500;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-gold/30;
+  }
+}
+
+@media (min-width: 768px) {
+  body.custom-cursor-active,
+  body.custom-cursor-active * {
+    cursor: none;
+  }
+}
