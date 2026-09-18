@@ -26,7 +26,7 @@ function Hero() {
 
   return (
     <section ref={ref} className="relative h-screen overflow-hidden -mt-20">
-      <motion.div style={{ y }} className="absolute inset-0 bg-gradient-to-br from-charcoal via-charcoal-light to-gold-deep/40">
+      <motion.div style={{ y }} className="absolute inset-0 bg-linear-to-br from-charcoal via-charcoal-light to-gold-deep/40">
         {/* TODO: remplacer par une vraie photo de la collection :
             <img src="/hero.jpg" alt="" className="w-full h-full object-cover" /> */}
       </motion.div>
@@ -80,10 +80,10 @@ function DeliveryZones() {
 function Categories() {
   return (
     <section className="py-16 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
-      <Link to="/catalogue?category=Neuf" className="relative h-72 rounded-2xl overflow-hidden bg-gradient-to-br from-gold-deep to-gold flex items-end p-6 hover:opacity-90 transition-opacity">
+      <Link to="/catalogue?category=Neuf" className="relative h-72 rounded-2xl overflow-hidden bg-linear-to-br from-gold-deep to-gold flex items-end p-6 hover:opacity-90 transition-opacity">
         <p className="font-display italic text-2xl text-charcoal">Nos Robes Neuves</p>
       </Link>
-      <Link to="/catalogue?category=Friperie" className="relative h-72 rounded-2xl overflow-hidden bg-gradient-to-br from-blush-soft to-blush flex items-end p-6 hover:opacity-90 transition-opacity">
+      <Link to="/catalogue?category=Friperie" className="relative h-72 rounded-2xl overflow-hidden bg-linear-to-br from-blush-soft to-blush flex items-end p-6 hover:opacity-90 transition-opacity">
         <p className="font-display italic text-2xl text-charcoal">Nos pépites de Friperie</p>
       </Link>
     </section>
