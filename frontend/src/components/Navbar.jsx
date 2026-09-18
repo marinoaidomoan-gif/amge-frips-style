@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
 import { useTheme } from '../context/ThemeContext.jsx';
+import { SITE, CONTACT } from '../lib/seo.js';
 
 const links = [
   { to: '/', label: 'Accueil' },
@@ -37,7 +38,7 @@ export default function Navbar() {
           to="/"
           className={`font-display italic text-xl ${overHero ? 'text-offwhite' : 'text-charcoal dark:text-offwhite'}`}
         >
-          AMGE Frips&Style
+          {SITE.name}
         </NavLink>
 
         <ul className="hidden md:flex items-center gap-9 text-[15px]">
@@ -69,7 +70,7 @@ export default function Navbar() {
             {theme === 'dark' ? '☀' : '☾'}
           </button>
           
-          <a href="https://wa.me/229XXXXXXXX"
+          <a href={`https://wa.me/${CONTACT.whatsappNumber}`}
             target="_blank"
             rel="noreferrer"
             className="hidden sm:inline-flex items-center gap-2 bg-gold text-charcoal px-4 py-2 rounded-full text-sm hover:bg-gold-deep transition-colors"

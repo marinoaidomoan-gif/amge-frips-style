@@ -6,7 +6,7 @@ import { getProducts } from '../services/api.js';
 import MasonryGrid from '../components/MasonryGrid.jsx';
 import ProductCard from '../components/ProductCard.jsx';
 
-const zones = ['Bénin', 'Burkina Faso', 'Niger', 'Togo'];
+import { DELIVERY_ZONES } from '../lib/seo.js';
 
 export default function Home() {
   return (
@@ -65,7 +65,7 @@ function DeliveryZones() {
         <p className="font-display text-2xl mb-2">Nous livrons dans toute l'Afrique de l'Ouest</p>
         <p className="text-charcoal/60 dark:text-offwhite/60 mb-10">Où que vous soyez, l'élégance vous parvient.</p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-          {zones.map((zone) => (
+          {DELIVERY_ZONES.map((zone) => (
             <div key={zone} className="flex flex-col items-center gap-3 bg-offwhite dark:bg-charcoal rounded-2xl py-6">
               <FaTruck className="text-gold" size={24} />
               <p className="text-sm">{zone}</p>
