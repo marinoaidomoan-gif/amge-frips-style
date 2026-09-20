@@ -15,6 +15,7 @@ export default function Home() {
       <DeliveryZones />
       <Categories />
       <NewArrivals />
+      <BrandStory />
     </>
   );
 }
@@ -107,6 +108,38 @@ function NewArrivals() {
           <ProductCard key={p._id} product={p} />
         ))}
       </MasonryGrid>
+    </section>
+  );
+}
+
+function BrandStory() {
+  return (
+    <section className="py-20 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div className="rounded-2xl overflow-hidden aspect-[4/5] bg-blush-soft dark:bg-charcoal-light order-2 md:order-1">
+        {/* TODO: remplacer par une vraie photo de la collection :
+            <img src="/collection.jpg" alt="" className="w-full h-full object-cover" /> */}
+      </div>
+
+      <div className="order-1 md:order-2">
+        <p className="text-gold-deep dark:text-gold text-sm mb-3">La maison</p>
+        <p className="font-display italic text-3xl md:text-4xl mb-6 leading-tight">
+          Une sélection, pas un stock
+        </p>
+        <p className="text-charcoal/75 dark:text-offwhite/75 leading-relaxed mb-4">
+          Depuis 2020, à Porto-Novo, chaque pièce est choisie à la main : la coupe, la matière,
+          l'état. Rien n'entre au catalogue sans avoir été vérifié.
+        </p>
+        <p className="text-charcoal/75 dark:text-offwhite/75 leading-relaxed mb-8">
+          Pas de vitrine anonyme : vous échangez directement avec la gérante, qui vous conseille
+          sur la taille, la tenue et la livraison dans les quatre pays desservis.
+        </p>
+        <Link
+          to="/a-propos"
+          className="inline-block border border-gold text-gold-deep dark:text-gold px-6 py-2.5 rounded-full hover:bg-gold hover:text-charcoal transition-colors"
+        >
+          Notre histoire
+        </Link>
+      </div>
     </section>
   );
 }
