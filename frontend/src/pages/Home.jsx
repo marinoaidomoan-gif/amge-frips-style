@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FaTruck } from 'react-icons/fa';
+import { FaTruck, FaWhatsapp, FaFacebookF, FaSnapchatGhost } from 'react-icons/fa';
 import { getProducts } from '../services/api.js';
 import MasonryGrid from '../components/MasonryGrid.jsx';
 import ProductCard from '../components/ProductCard.jsx';
 
-import { DELIVERY_ZONES } from '../lib/seo.js';
+import { DELIVERY_ZONES, CONTACT } from '../lib/seo.js';
 
 export default function Home() {
   return (
@@ -16,6 +16,7 @@ export default function Home() {
       <Categories />
       <NewArrivals />
       <BrandStory />
+      <SocialCTA />
     </>
   );
 }
@@ -139,6 +140,56 @@ function BrandStory() {
         >
           Notre histoire
         </Link>
+      </div>
+    </section>
+  );
+}
+
+function SocialCTA() {
+  return (
+    <section className="relative py-24 px-6 text-center overflow-hidden">
+      <div className="absolute inset-0 bg-linear-to-br from-charcoal via-charcoal-light to-charcoal">
+        {/* TODO: remplacer par une vraie photo de la boutique/atelier :
+            <img src="/boutique.jpg" alt="" className="w-full h-full object-cover" /> */}
+      </div>
+      <div className="absolute inset-0 bg-charcoal/60" />
+
+      <div className="relative max-w-2xl mx-auto">
+        <p className="text-gold text-sm mb-3">Rejoignez-nous</p>
+        <p className="font-display italic text-3xl md:text-4xl text-offwhite mb-4 leading-tight">
+          Les nouveautés arrivent d'abord sur nos réseaux
+        </p>
+        <div className="w-12 h-px bg-gold mx-auto mb-6" />
+        <p className="text-offwhite/75 mb-10">
+          Nouveautés, arrivages et tenues complètes sont publiés chaque semaine sur nos réseaux.
+        </p>
+
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          
+          <a  href={`https://wa.me/${CONTACT.whatsappNumber}`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 bg-gold text-charcoal px-6 py-3 rounded-full hover:bg-gold-deep transition-colors"
+          >
+            <FaWhatsapp /> WhatsApp
+          </a>
+          
+          <a  href={CONTACT.facebookUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 border border-offwhite/30 text-offwhite px-6 py-3 rounded-full hover:border-gold hover:text-gold transition-colors"
+          >
+            <FaFacebookF /> Facebook
+          </a>
+          
+          <a  href={CONTACT.snapchatUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 border border-offwhite/30 text-offwhite px-6 py-3 rounded-full hover:border-gold hover:text-gold transition-colors"
+          >
+            <FaSnapchatGhost /> Snapchat
+          </a>
+        </div>
       </div>
     </section>
   );
