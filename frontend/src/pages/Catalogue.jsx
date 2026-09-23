@@ -40,8 +40,8 @@ export default function Catalogue() {
         </p>
       ) : (
         <MasonryGrid>
-          {products.map((p) => (
-            <ProductCard key={p._id} product={p} />
+          {products.map((p, i) => (
+            <ProductCard key={p._id} product={p} index={i} />
           ))}
         </MasonryGrid>
       )}

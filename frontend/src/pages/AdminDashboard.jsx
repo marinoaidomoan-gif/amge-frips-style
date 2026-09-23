@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext.jsx';
 import { getProducts, createProduct, updateProduct, deleteProduct, ASSET_URL } from '../services/api.js';
 import ProductForm from '../components/ProductForm.jsx';
+import DeleteButton from '../components/DeleteButton.jsx';
 
 export default function AdminDashboard() {
   const { token, logout } = useAuth();
@@ -43,7 +44,6 @@ export default function AdminDashboard() {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm('Supprimer ce produit ?')) return;
     try {
       await deleteProduct(id, token);
       await loadProducts();
@@ -103,9 +103,7 @@ export default function AdminDashboard() {
                   <button onClick={() => setEditing(p)} className="flex-1 text-sm py-1.5 rounded-lg border border-charcoal/15 dark:border-offwhite/20 hover:border-gold transition-colors">
                     Modifier
                   </button>
-                  <button onClick={() => handleDelete(p._id)} className="flex-1 text-sm py-1.5 rounded-lg border border-red-300 text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors">
-                    Supprimer
-                  </button>
+                  <DeleteButton onConfirm={() => handleDelete(p._id)} />
                 </div>
               </div>
             </div>

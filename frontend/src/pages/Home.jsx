@@ -5,7 +5,7 @@ import { FaTruck, FaWhatsapp, FaFacebookF, FaSnapchatGhost } from 'react-icons/f
 import { getProducts } from '../services/api.js';
 import MasonryGrid from '../components/MasonryGrid.jsx';
 import ProductCard from '../components/ProductCard.jsx';
-
+import SectionHeading from '../components/SectionHeading.jsx';
 import { DELIVERY_ZONES, CONTACT } from '../lib/seo.js';
 
 export default function Home() {
@@ -105,8 +105,8 @@ function NewArrivals() {
     <section className="py-16 px-6 max-w-6xl mx-auto">
       <p className="font-display text-2xl text-center mb-10">Nouveautés</p>
       <MasonryGrid columns="columns-2 lg:columns-4">
-        {products.map((p) => (
-          <ProductCard key={p._id} product={p} />
+        {products.map((p, i) => (
+        <ProductCard key={p._id} product={p} index={i} />
         ))}
       </MasonryGrid>
     </section>
