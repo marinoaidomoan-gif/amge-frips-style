@@ -167,7 +167,7 @@ function LatestProducts() {
               ))}
             </div>
           ) : products.length > 0 ? (
-            <MasonryGrid columns="columns-2 lg:columns-4">
+            <MasonryGrid columns={4}>
               {products.map((p, i) => (
                 <ProductCard key={p._id} product={p} index={i} />
               ))}
