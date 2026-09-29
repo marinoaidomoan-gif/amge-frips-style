@@ -7,6 +7,7 @@ export const SITE = {
     'robes tendance Bénin, friperie en ligne Porto-Novo, vêtement femme Bénin, livraison vêtement Burkina, AMGE FRIPS&STYLE',
   url: 'https://amge-frips-style.com', // TODO: remplacer par le vrai domaine une fois déployé
   since: '2020',
+  city: 'Porto-Novo',
 };
 
 export const CONTACT = {
