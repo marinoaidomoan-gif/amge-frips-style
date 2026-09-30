@@ -1,8 +1,7 @@
+import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import Navbar from './components/Navbar.jsx';
-import Footer from './components/Footer.jsx';
-import CustomCursor from './components/CustomCursor.jsx';
+import Layout from './components/Layout.jsx';
 import GoldVeil from './components/GoldVeil.jsx';
 import AdminRoute from './components/AdminRoute.jsx';
 import { pageTransition } from './animations/framerMotionVariants.js';
@@ -15,15 +14,16 @@ import Contact from './pages/Contact.jsx';
 import AdminLogin from './pages/AdminLogin.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
 
-export default function App() {
+function PublicSite() {
   const location = useLocation();
 
-  return (
-    <>
-      <CustomCursor />
-      <Navbar />
-      <GoldVeil key={`veil-${location.pathname}`} />
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
+  return (
+    <Layout>
+      <GoldVeil key={`veil-${location.pathname}`} />
       <AnimatePresence mode="wait">
         <motion.main
           key={location.pathname}
@@ -31,7 +31,7 @@ export default function App() {
           initial="initial"
           animate="animate"
           exit="exit"
-          className="pt-20"
+          className="pt-20 flex-1"
         >
           <Routes location={location}>
             <Route path="/" element={<Home />} />
@@ -39,20 +39,26 @@ export default function App() {
             <Route path="/produit/:id" element={<ProductDetail />} />
             <Route path="/a-propos" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/admin/login" element={<AdminLogin />} />
-            <Route
-              path="/admin"
-              element={
-                <AdminRoute>
-                  <AdminDashboard />
-                </AdminRoute>
-              }
-            />
           </Routes>
         </motion.main>
       </AnimatePresence>
+    </Layout>
+  );
+}
 
-      <Footer />
-    </>
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route
+        path="/admin"
+        element={
+          <AdminRoute>
+            <AdminDashboard />
+          </AdminRoute>
+        }
+      />
+      <Route path="/*" element={<PublicSite />} />
+    </Routes>
   );
 }
