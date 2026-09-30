@@ -52,3 +52,16 @@ export const deleteProduct = async (id, token) => {
   });
   if (!res.ok) throw new Error('Erreur lors de la suppression.');
 };
+
+export const sendMessage = async ({ name, email, phone, body }) => {
+  const res = await fetch(`${API_URL}/messages`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, phone, body }),
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.message || "L'envoi a échoué.");
+  }
+  return res.json();
+};
