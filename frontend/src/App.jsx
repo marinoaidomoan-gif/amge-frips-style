@@ -14,6 +14,9 @@ import Contact from './pages/Contact.jsx';
 import AdminLogin from './pages/AdminLogin.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
 
+import Cgu from './pages/Cgu.jsx';
+import Confidentialite from './pages/Confidentialite.jsx';
+
 function PublicSite() {
   const location = useLocation();
 
@@ -39,6 +42,8 @@ function PublicSite() {
             <Route path="/produit/:id" element={<ProductDetail />} />
             <Route path="/a-propos" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/cgu" element={<Cgu />} />
+            <Route path="/confidentialite" element={<Confidentialite />} />
           </Routes>
         </motion.main>
       </AnimatePresence>
