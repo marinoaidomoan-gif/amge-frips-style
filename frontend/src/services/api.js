@@ -73,3 +73,19 @@ export const getStats = async (token) => {
   if (!res.ok) throw new Error('Erreur lors du chargement des statistiques.');
   return res.json();
 };
+
+export const deleteMessage = async (id, token) => {
+  const res = await fetch(`${API_URL}/admin/messages/${id}`, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error('Suppression impossible.');
+};
+
+export const getMessages = async (token) => {
+  const res = await fetch(`${API_URL}/admin/messages`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error('Erreur lors du chargement des messages.');
+  return res.json();
+};
