@@ -65,3 +65,11 @@ export const sendMessage = async ({ name, email, phone, body }) => {
   }
   return res.json();
 };
+
+export const getStats = async (token) => {
+  const res = await fetch(`${API_URL}/admin/stats`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error('Erreur lors du chargement des statistiques.');
+  return res.json();
+};
