@@ -7,6 +7,8 @@ import dotenv from 'dotenv';
 import productRoutes from './routes/product.routes.js';
 import adminRoutes from './routes/admin.routes.js';
 
+import messageRoutes from './routes/message.routes.js';
+
 dotenv.config();
 
 const app = express();
@@ -20,6 +22,8 @@ app.use('/api/products', productRoutes);
 app.use('/api/admin', adminRoutes);
 
 app.get('/api/health', (req, res) => res.json({ ok: true }));
+
+app.use('/api/messages', messageRoutes);
 
 const PORT = process.env.PORT || 5000;
 
