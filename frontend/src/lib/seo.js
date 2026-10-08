@@ -11,7 +11,7 @@ export const SITE = {
 };
 
 export const CONTACT = {
-  whatsappNumber: '229XXXXXXXX', // TODO: remplacer par le vrai numéro de la gérante
+  whatsappNumber: '22962686183',
   address: 'Porto-Novo, Bénin',
   facebookUrl: '#', // TODO
   snapchatUrl: '#', // TODO
