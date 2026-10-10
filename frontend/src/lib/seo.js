@@ -17,4 +17,4 @@ export const CONTACT = {
   snapchatUrl: '#', // TODO
 };
 
-export const DELIVERY_ZONES = ['Bénin', 'Burkina Faso', 'Niger', 'Togo'];
+export const DELIVERY_ZONES = ['Bénin', 'Burkina Faso', 'Niger', ];

@@ -8,7 +8,7 @@ const items = [
 
 export default function AdminSidebar({ active, onChange, onLogout }) {
   return (
-    <aside className="w-60 shrink-0 bg-charcoal text-offwhite min-h-screen flex flex-col">
+    <aside className="w-60 shrink-0 bg-charcoal text-offwhite h-screen sticky top-0 self-start flex flex-col overflow-y-auto">
       <div className="px-6 py-7 border-b border-offwhite/10">
         <p className="font-display uppercase tracking-[0.1em] text-sm">
           AMGE <span className="text-gold">Frips&amp;Style</span>

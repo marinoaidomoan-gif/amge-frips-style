@@ -20,8 +20,8 @@ export const getStats = async (req, res) => {
       if (categoryBreakdown[p.category] !== undefined) categoryBreakdown[p.category] += 1;
     });
 
-    const weeks = [];
     const now = new Date();
+    const weeks = [];
     for (let i = 7; i >= 0; i--) {
       const weekStart = startOfWeek(new Date(now.getTime() - i * 7 * 24 * 60 * 60 * 1000));
       weeks.push({
@@ -30,18 +30,21 @@ export const getStats = async (req, res) => {
         count: 0,
       });
     }
-
     products.forEach((p) => {
-      const productWeekStart = startOfWeek(p.createdAt).getTime();
-      const match = weeks.find((w) => w.start.getTime() === productWeekStart);
+      const match = weeks.find((w) => w.start.getTime() === startOfWeek(p.createdAt).getTime());
       if (match) match.count += 1;
     });
+
+    const recentProducts = await Product.find().sort({ createdAt: -1 }).limit(5);
+    const recentMessages = await Message.find().sort({ createdAt: -1 }).limit(5);
 
     res.json({
       totalProducts: products.length,
       categoryBreakdown,
       productsOverTime: weeks.map(({ label, count }) => ({ label, count })),
       totalMessages,
+      recentProducts,
+      recentMessages,
     });
   } catch (err) {
     res.status(500).json({ message: 'Erreur lors du calcul des statistiques.' });

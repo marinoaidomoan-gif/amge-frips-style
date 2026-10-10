@@ -25,6 +25,14 @@ export const loginAdmin = async (username, password) => {
   return res.json();
 };
 
+export const getMe = async (token) => {
+  const res = await fetch(`${API_URL}/admin/me`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error('Session invalide.');
+  return res.json();
+};
+
 export const createProduct = async (formData, token) => {
   const res = await fetch(`${API_URL}/admin/products`, {
     method: 'POST',
@@ -66,11 +74,11 @@ export const sendMessage = async ({ name, email, phone, body }) => {
   return res.json();
 };
 
-export const getStats = async (token) => {
-  const res = await fetch(`${API_URL}/admin/stats`, {
+export const getMessages = async (token) => {
+  const res = await fetch(`${API_URL}/admin/messages`, {
     headers: { Authorization: `Bearer ${token}` },
   });
-  if (!res.ok) throw new Error('Erreur lors du chargement des statistiques.');
+  if (!res.ok) throw new Error('Erreur lors du chargement des messages.');
   return res.json();
 };
 
@@ -82,10 +90,10 @@ export const deleteMessage = async (id, token) => {
   if (!res.ok) throw new Error('Suppression impossible.');
 };
 
-export const getMessages = async (token) => {
-  const res = await fetch(`${API_URL}/admin/messages`, {
+export const getStats = async (token) => {
+  const res = await fetch(`${API_URL}/admin/stats`, {
     headers: { Authorization: `Bearer ${token}` },
   });
-  if (!res.ok) throw new Error('Erreur lors du chargement des messages.');
+  if (!res.ok) throw new Error('Erreur lors du chargement des statistiques.');
   return res.json();
 };
